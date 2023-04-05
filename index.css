@@ -191,3 +191,29 @@ html, body {
     padding: 0 8px;
   }
 }
+
+
+
+#chart, #status {
+  float: left;
+}
+
+#chart {
+  width: 600px;
+}
+
+#status {
+  width: 430px;
+  height: 322px;
+}
+
+#status p {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 2em;
+}
+
+canvas {
+  border: 1px solid #EEE;
+  margin: 0 1px 1px 0;
+} 
