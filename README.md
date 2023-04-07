@@ -1,2 +1,2 @@
 # chrome-trex-neural-network
- ![](https://github.com/rvikunwar/Gif/blob/main/new%20(1).gif)
+ ![](https://github.com/rvikunwar/chrome-trex-neural-network/blob/master/assets/demo.gif)
