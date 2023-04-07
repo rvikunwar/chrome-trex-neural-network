@@ -8,7 +8,7 @@ class Runnerv1 {
         this.onEndGeneration = onEndGeneration
 
         for (let i=0; i<games; i++) {
-            document.getElementById("t").insertAdjacentHTML("afterend",
+            document.getElementById("trex-container").insertAdjacentHTML("afterend",
                 `<div id="main-frame-error" class="division interstitial-wrapper-${i}"><div id="main-content"><div class="icon icon-offline-${i}" alt=""></div></div><div id="offline-resources"><img id="offline-resources-1x-${i}" src="assets/default_100_percent/100-offline-sprite.png"><img id="offline-resources-2x-${i}" src="assets/default_200_percent/200-offline-sprite.png"></div></div>`);
             this.games.push({"crashed": false, "trex_world": new Runner(`.interstitial-wrapper-${i}`, `offline-resources-2x-${i}`, `offline-resources-1x-${i}`, `icon-offline-${i}`, `aa-${i}`) });
         }
@@ -16,10 +16,24 @@ class Runnerv1 {
 
     startGeneration() {
         this.gamesFinished = 0
-        for (let i=0; i<this.games.length; i++) {
-            this.games[i].trex_brain = this.neat.population[i]
-            this.games[i].trex_brain.score = 0
+        const startGame = () => {
+            for (let i=0; i<this.games.length; i++) {
+                this.games[i].trex_brain = this.neat.population[i]
+                this.games[i].trex_brain.score = 0
+
+                
+                this.games[i].trex_world.playing = true;
+                this.games[i].trex_world.update();
+                if (window.errorPageController) {
+                    errorPageController.trackEasterEgg();
+                }
+
+                this.games[i].trex_world.tRex.startJump(this.games[i].trex_world.currentSpeed);
+            }
         }
+        setTimeout(startGame, 2000)
+
+
         interval = setInterval(()=>{
             this.think()
         }, 100)

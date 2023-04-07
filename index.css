@@ -193,18 +193,30 @@ html, body {
 }
 
 
+.header{
+  display: flex;
+  justify-content: space-around;
+}
 
 #chart, #status {
   float: left;
 }
 
+
+#defaultCanvas0{
+  height: 0px !important;
+  width: 0px !important;
+}
+
 #chart {
+  padding-top: 20px;
+  padding-left: 20px;
   width: 600px;
 }
 
 #status {
   width: 430px;
-  height: 322px;
+  height: 322px;  
 }
 
 #status p {

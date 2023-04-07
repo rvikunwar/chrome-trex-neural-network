@@ -7,7 +7,13 @@ function normalizeValue(value, min, max) {
     return map(value, min, max, 0, 1);
 }
 
-function maximum(a, b){
-    if(parseFloat(a)>parseFloat(b)) return a;
+function maximum(a, b) {
+    if (parseFloat(a) > parseFloat(b)) return a;
     return b
 }
+
+
+//for disabling keys
+document.addEventListener('keydown', function (event) {
+    event.preventDefault();
+}, true);

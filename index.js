@@ -659,43 +659,43 @@
          */
         onKeyDown: function (e) {
             // Prevent native page scrolling whilst tapping on mobile.
-            if (IS_MOBILE && this.playing) {
-                e.preventDefault();
-            }
+            // if (IS_MOBILE && this.playing) {
+            //     e.preventDefault();
+            // }
 
-            if (e.target != this.detailsButton) {
-                if (!this.crashed && (Runner.keycodes.JUMP[e.keyCode] ||
-                    e.type == Runner.events.TOUCHSTART)) {
-                    if (!this.playing) {
-                        this.playing = true;
-                        this.update();
-                        if (window.errorPageController) {
-                            errorPageController.trackEasterEgg();
-                        }
-                    }
-                    //  Play sound effect and jump on starting the game for the first time.
-                    if (!this.tRex.jumping && !this.tRex.ducking) {
-                        this.playSound(this.soundFx.BUTTON_PRESS);
-                        this.tRex.startJump(this.currentSpeed);
-                    }
-                }
+            // if (e.target != this.detailsButton) {
+            //     if (!this.crashed && (Runner.keycodes.JUMP[e.keyCode] ||
+            //         e.type == Runner.events.TOUCHSTART)) {
+            //         if (!this.playing) {
+            //             this.playing = true;
+            //             this.update();
+            //             if (window.errorPageController) {
+            //                 errorPageController.trackEasterEgg();
+            //             }
+            //         }
+            //         //  Play sound effect and jump on starting the game for the first time.
+            //         if (!this.tRex.jumping && !this.tRex.ducking) {
+            //             this.playSound(this.soundFx.BUTTON_PRESS);
+            //             this.tRex.startJump(this.currentSpeed);
+            //         }
+            //     }
 
-                if (this.crashed && e.type == Runner.events.TOUCHSTART &&
-                    e.currentTarget == this.containerEl) {
-                    this.restart();
-                }
-            }
+            //     if (this.crashed && e.type == Runner.events.TOUCHSTART &&
+            //         e.currentTarget == this.containerEl) {
+            //         this.restart();
+            //     }
+            // }
 
-            if (this.playing && !this.crashed && Runner.keycodes.DUCK[e.keyCode]) {
-                e.preventDefault();
-                if (this.tRex.jumping) {
-                    // Speed drop, activated only when jump key is not pressed.
-                    this.tRex.setSpeedDrop();
-                } else if (!this.tRex.jumping && !this.tRex.ducking) {
-                    // Duck.
-                    this.tRex.setDuck(true);
-                }
-            }
+            // if (this.playing && !this.crashed && Runner.keycodes.DUCK[e.keyCode]) {
+            //     e.preventDefault();
+            //     if (this.tRex.jumping) {
+            //         // Speed drop, activated only when jump key is not pressed.
+            //         this.tRex.setSpeedDrop();
+            //     } else if (!this.tRex.jumping && !this.tRex.ducking) {
+            //         // Duck.
+            //         this.tRex.setDuck(true);
+            //     }
+            // }
         },
 
 
@@ -704,30 +704,30 @@
          * @param {Event} e
          */
         onKeyUp: function (e) {
-            var keyCode = String(e.keyCode);
-            var isjumpKey = Runner.keycodes.JUMP[keyCode] ||
-                e.type == Runner.events.TOUCHEND ||
-                e.type == Runner.events.MOUSEDOWN;
+            // var keyCode = String(e.keyCode);
+            // var isjumpKey = Runner.keycodes.JUMP[keyCode] ||
+            //     e.type == Runner.events.TOUCHEND ||
+            //     e.type == Runner.events.MOUSEDOWN;
 
-            if (this.isRunning() && isjumpKey) {
-                this.tRex.endJump();
-            } else if (Runner.keycodes.DUCK[keyCode]) {
-                this.tRex.speedDrop = false;
-                this.tRex.setDuck(false);
-            } else if (this.crashed) {
-                // Check that enough time has elapsed before allowing jump key to restart.
-                var deltaTime = getTimeStamp() - this.time;
+            // if (this.isRunning() && isjumpKey) {
+            //     this.tRex.endJump();
+            // } else if (Runner.keycodes.DUCK[keyCode]) {
+            //     this.tRex.speedDrop = false;
+            //     this.tRex.setDuck(false);
+            // } else if (this.crashed) {
+            //     // Check that enough time has elapsed before allowing jump key to restart.
+            //     var deltaTime = getTimeStamp() - this.time;
 
-                if (Runner.keycodes.RESTART[keyCode] || this.isLeftClickOnCanvas(e) ||
-                    (deltaTime >= this.config.GAMEOVER_CLEAR_TIME &&
-                        Runner.keycodes.JUMP[keyCode])) {
-                    this.restart();
-                }
-            } else if (this.paused && isjumpKey) {
-                // Reset the jump state
-                this.tRex.reset();
-                this.play();
-            }
+            //     if (Runner.keycodes.RESTART[keyCode] || this.isLeftClickOnCanvas(e) ||
+            //         (deltaTime >= this.config.GAMEOVER_CLEAR_TIME &&
+            //             Runner.keycodes.JUMP[keyCode])) {
+            //         this.restart();
+            //     }
+            // } else if (this.paused && isjumpKey) {
+            //     // Reset the jump state
+            //     this.tRex.reset();
+            //     this.play();
+            // }
         },
 
         /**

@@ -32,7 +32,7 @@ const chartData = {
 const chart = new frappe.Chart('#chart', {
     title: 'generation score history',
     type: 'line',
-    height: 200,
+    height: 250,
     data: chartData
 })
 
